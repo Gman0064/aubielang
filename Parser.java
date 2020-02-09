@@ -46,16 +46,12 @@ public class Parser {
         } else if (stateSplit.length == 1 && !statement.equals("")) {
             if (isDefined(command)) {
                 if (this.vars.get(command).type.equals("num")) {
-                    return parse(this.vars.get(command).value);
+                    return Double.parseDouble(this.vars.get(command).value);
                 } else {
                     return this.vars.get(command).value;
                 }
-            } else {
-                try {
-                    return Double.parseDouble(command);
-                } catch (Exception e) {
-                    throw new Error("Parsing Error");
-                }
+            } else if (!funcs.containsKey(command)) {
+                return Double.parseDouble(command);
             }
         }
         rest = statement.substring(command.length()).trim();
@@ -128,7 +124,7 @@ public class Parser {
             return "Yahoosie";
 
         }
-        throw new Error("Command Not Found");
+        throw new Error("Command \"" + command + "\" Not Found");
     }
 
     // Checks if a variable is defined
@@ -201,6 +197,7 @@ public class Parser {
         String[] argSplit = args.split(" ");
         Function f = funcs.get(name);
         HashMap<String,Variable> myVars = new HashMap<String,Variable>();
+        if (args.equals("")) argSplit = new String[0];
 
         if (argSplit.length != f.vars.size()) throw new Error("Baddio");
         for (int i = 0; i < argSplit.length; i++) {

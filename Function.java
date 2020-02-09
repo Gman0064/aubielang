@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class Function {
 	HashMap<Integer,String[]> vars;
-	Scanner sc;
+	String sc;
 
-	public Function(HashMap<Integer,String[]> vars, Scanner sc) {
+	public Function(HashMap<Integer,String[]> vars, String cmds) {
 		this.vars = vars;
-		this.sc = sc;
+		this.sc = cmds;
 	}
 }
