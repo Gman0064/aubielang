@@ -1,20 +1,24 @@
 import java.util.*;
 
 public class Parser {
+    // Input stream of AUBIE commands
     public Scanner commands;
+    // Variable storage
     public static HashMap<String,Variable> vars = new HashMap<String,Variable>();
 
-
+    // Constructor, provides input stream for file parser
     public Parser(Scanner input) {
         commands = input;
     }
 
+    // Processes commands
     public void main() {
         while (commands.hasNext()) {
             parse(commands.nextLine());
         }
     }
 
+    // Parses lines for commands and values
     public Object parse(String statementt) {
         if (statementt == null) throw new Error("null");
 
@@ -100,16 +104,18 @@ public class Parser {
 
         } else if (command.equals("lthan")){
                 return lthan(rest);
-                
+
         }
         throw new Error("Command Not Found");
     }
 
+    // Checks if a variable is defined
     public boolean isDefined(String name) {
         if (vars.containsKey(name)) return true;
         return false;
     }
 
+    // Defines a variable
     public boolean def(String args) {
         // name type value
         String[] arguments = args.split(" ");
@@ -134,6 +140,8 @@ public class Parser {
             return true;
         }
     }
+
+    // Multiplies a list of numbers
     public double mult(String statement) {
         double product = 1;
         String[] words = statement.split(" ");
@@ -154,6 +162,7 @@ public class Parser {
         return product;
     }
 
+    // Adds a list of numbers
     public double sum(String statement) {
         double sum = 0;
         String[] words = statement.split(" ");
@@ -173,12 +182,13 @@ public class Parser {
         return sum;
     }
 
+    // Raises first argument to the power of second argument
     public double power(String statement) {
         double pow = 1;
         String[] words = statement.split(" ");
         ArrayList<Double> nums = new ArrayList<Double>();
         // Iterate through our string for numbers to add
-        if (words.length <= 2) {
+        if (words.length == 2) {
             for (int x = 0; x < words.length; x++) {
                 try {
                     Double num = (Double) parse(words[x]);
@@ -195,6 +205,7 @@ public class Parser {
         
     }
 
+    // Subtracts the numbers in a list from the first given argument
     public double subtract(String statement) {
         double result = 0;
         String[] words = statement.split(" ");
@@ -218,10 +229,11 @@ public class Parser {
         return result;
     }
 
+    // Performs x mod y given x as first argument and y as second argument
     public double mod(String statement) {
         double modulus = -1.0;
         String[] words = statement.split(" ");
-        if (words.length > 2) {
+        if (words.length != 2) {
             throw new Error("Invalid arguments");
         } else {
             ArrayList<Double> nums = new ArrayList<Double>();
@@ -243,6 +255,7 @@ public class Parser {
         return modulus;
     }
 
+    // Divides the first number by a list of numbers 
     public double div(String statement) {
         double div = 1;
         String[] words = statement.split(" ");
@@ -267,10 +280,11 @@ public class Parser {
         return div;
     }
 
+    // Performs log base x of y
     public double log(String statement) {
         double logVal = 0.0;
         String[] words = statement.split(" ");
-        if (words.length > 2) {
+        if (words.length != 2) {
             throw new Error("Invalid arguments");
         } else {
             ArrayList<Double> nums = new ArrayList<Double>();
@@ -288,6 +302,7 @@ public class Parser {
         return logVal;
     }
 
+    // Performs x factorial, where x is treated as a whole number regardless of precision
     public double fact(String statement) {
         double result = 0;
         String[] words = statement.split(" ");
@@ -313,6 +328,8 @@ public class Parser {
         }
         return result;     
     }
+
+    // Checks if two values are equal
     public boolean equals(String statement) {
         String[] words = statement.split(" ");
         if(words.length == 2)
@@ -324,10 +341,12 @@ public class Parser {
         throw new Error("Invalid Arguments");
     }
 
+    // Checks if two values are not equal
     public boolean nequals(String statement) {
         return !equals(statement);
     }
 
+    // Checks if two 
     public boolean lequals(String statement) {
         String[] words = statement.split(" ");
         if(words.length == 2)
