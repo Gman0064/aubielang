@@ -8,7 +8,7 @@ public class Variable implements Comparable<Variable>
 	{
 		name = nameIn;
 		type = typeIn;
-		valueIn = value;
+		value = valueIn;
 	}
 	public boolean equals(Variable varIn)
 	{
