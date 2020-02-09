@@ -21,28 +21,34 @@ public class Parser {
     public Object parse(String statement) {
         String[] stateSplit = statement.split(" ");
         String command = stateSplit[0];
+        String rest = "";
+        if (statement.length() >= command.length() + 1) {
+            rest = statement.substring(command.length() + 1)
+        } else {
+            throw new Error();
+        }
         if (command.equals("def")) {
-            if (def(statement.substring(command.length() + 1))) {
+            if (def(rest)) {
                 return "Defined";
             } else {
                 return "Incorrect statement";
             }
         } else if (command.equals("sum")) {
-            return math.sum(statement.substring(command.length() + 1));
+            return math.sum(rest);
         } else if (command.equals("sub")) {
-            return math.subtract(statement.substring(command.length() + 1));
+            return math.subtract(rest);
         } else if (command.equals("mult")) {
-            return math.mult(statement.substring(command.length() + 1));
+            return math.mult(rest);
         } else if (command.equals("pow")) {
-            return math.power(statement.substring(command.length() + 1));
+            return math.power(rest);
         } else if (command.equals("mod")) {
-            return math.mod(statement.substring(command.length() + 1));
+            return math.mod(rest);
         } else if (command.equals("log")) {
-            return math.log(statement.substring(command.length() + 1));
+            return math.log(rest);
         } else if (command.equals("div")) {
-            return math.div(statement.substring(command.length() + 1));
+            return math.div(rest);
         } else if (command.equals("fact")) {
-            return math.fact(statement.substring(command.length() + 1));
+            return math.fact(rest);
         } else if (command.startsWith("#")) {
             return "Commented Line";
         } else if (command.equals("")) {
