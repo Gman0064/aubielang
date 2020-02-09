@@ -82,8 +82,27 @@ public class Parser {
 
         } else if (command.equals("")) {
             return "Empty Line";
+
+        }else if (command.equals("equals")){
+                return equals(rest);
+
+        } else if (command.equals("nequals")){
+                return nequals(rest);
+
+        } else if (command.equals("lequals")){
+                return lequals(rest);
+
+        } else if (command.equals("gequals")){
+                return gequals(rest);
+
+        } else if (command.equals("gthan")){
+                return gthan(rest);
+
+        } else if (command.equals("lthan")){
+                return lthan(rest);
+                
         }
-        throw new Error("Hi");
+        throw new Error("Command Not Found");
     }
 
     public boolean isDefined(String name) {
@@ -293,5 +312,73 @@ public class Parser {
             result *= i;
         }
         return result;     
+    }
+    public boolean equals(String statement) {
+        String[] words = statement.split(" ");
+        if(words.length == 2)
+        {
+            Object a = parse(words[0]);
+            Object b = parse(words[1]);
+            return a.equals(b);
+        }
+        throw new Error("Invalid Arguments");
+    }
+
+    public boolean nequals(String statement) {
+        return !equals(statement);
+    }
+
+    public boolean lequals(String statement) {
+        String[] words = statement.split(" ");
+        if(words.length == 2)
+        {
+            Object a = parse(words[0]);
+            Object b = parse(words[1]);
+            return comparing(a,b) <= 0;
+        }
+        throw new Error("Invalid arguments");
+    }
+
+    public boolean gequals(String statement) {
+        String[] words = statement.split(" ");
+        if(words.length == 2)
+        {
+            Object a = parse(words[0]);
+            Object b = parse(words[1]);
+            return comparing(a,b) >= 0;
+        }
+        throw new Error("Invalid arguments");
+    }
+
+    public boolean lthan(String statement) {
+        String[] words = statement.split(" ");
+        if(words.length == 2)
+        {
+            Object a = parse(words[0]);
+            Object b = parse(words[1]);
+            return comparing(a,b) < 0;
+        }
+        throw new Error("Invalid arguments");
+    }
+
+    public boolean gthan(String statement) {
+        String[] words = statement.split(" ");
+        if(words.length == 2)
+        {
+            Object a = parse(words[0]);
+            Object b = parse(words[1]);
+            return comparing(a,b) > 0;
+        }
+        throw new Error("Invalid arguments");
+    }
+
+    public int comparing(Object obj1, Object obj2) {
+        if (obj1 instanceof Double && obj2 instanceof Double) {
+            return Double.compare((Double) obj1, (Double) obj2);
+        } else if (obj1 instanceof String && obj2 instanceof String) {
+            return obj1.toString().compareTo(obj2.toString());
+        } else {
+            throw new Error("Type Mismatch Error");
+        }
     }
 }
