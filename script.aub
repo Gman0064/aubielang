@@ -1,0 +1,11 @@
+def myvar num 10
+def othervar num 9
+def anothervar num 2
+sum 10 10
+sub 9 1
+mult 10 3
+pow 2 4
+mod 4 3
+log 2 8
+div 8 4
+fact myvar

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-javac Interpreter.java
-java Interpreter $1
+javac AubieLang.java
+java AubieLang $1
