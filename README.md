@@ -1,9 +1,6 @@
-# AUBIElang
-The Aubie programming language
+## The AUBIElang Programming Language
 
-Available functions:
-
-##Math:
+## Math:
 sum a b c... (Addition)
 sub a b c... (Subtraction)
 div a b c... (Division)
@@ -13,15 +10,15 @@ pow a b (Exponents)
 mod a b (Modulus)
 fact a (Factorials)
 
-##Standard Functions:
+## Standard Functions:
 print a (Print to console)
 
-##Keywords:
+## Keywords:
 def a (type num:string) (value)
   
 if (comparison)
-  elif ...
-    ...
+	elif ...
+		...
   else
     ...
   done
