@@ -18,35 +18,36 @@ public class Parser {
     public Object parse(String statement) {
         String[] stateSplit = statement.split(" ");
         String command = stateSplit[0];
+        String rest = statement.substring(command.length() + 1);
         if (command.equals("def")) {
             if (def(statement.substring(command.length() + 1))) {
                 return "Defined";
             } else {
-                return "Incorrect statement";
+                return "Fuck";
             }
         } else if (command.equals("sum")) {
-            return sum(statement.substring(command.length() + 1));
+            return sum(rest);
         } else if (command.equals("sub")) {
-            return subtract(statement.substring(command.length() + 1));
+            return subtract(rest);
         } else if (command.equals("mult")) {
-            return mult(statement.substring(command.length() + 1));
+            return mult(rest);
         } else if (command.equals("pow")) {
-            return power(statement.substring(command.length() + 1));
+            return power(rest);
         } else if (command.equals("mod")) {
-            return mod(statement.substring(command.length() + 1));
+            return mod(rest);
         } else if (command.equals("log")) {
-            return log(statement.substring(command.length() + 1));
+            return log(rest);
         } else if (command.equals("div")) {
-            return div(statement.substring(command.length() + 1));
+            return div(rest);
         } else if (command.equals("fact")) {
-            return fact(statement.substring(command.length() + 1));
-        } else if (command.startsWith("#")) {
-            return "Commented Line";
+            return fact(rest);
         } else if (command.equals("")) {
             return "";
+        } else if (command.startsWith("#")) {
+            return "";
+        } else {
+            throw new Error();
         }
-
-        throw new Error();
     }
 
     public boolean def(String args) {
