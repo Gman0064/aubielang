@@ -33,7 +33,7 @@ public class Parser {
         if (statementt == null) throw new Error("null");
 
         String statement = statementt.trim();
-        System.out.println(statement);
+        // System.out.println(statement);
         String[] stateSplit = statement.split(" ");
         String command = stateSplit[0];
         String rest = "";
@@ -194,9 +194,7 @@ public class Parser {
             varis.put(i/2,new String[]{vn,vt});
         }
 
-        Scanner funcScan = new Scanner(cmds);
-        funcScan.useDelimiter("\n");
-        funcs.put(name,new Function(varis,funcScan));
+        funcs.put(name,new Function(varis,cmds));
     }
 
     public void runFunc(String name, String args) {
@@ -218,7 +216,9 @@ public class Parser {
             myVars.put(vName, new Variable(vType, vVal));
         }
 
-        Parser p = new Parser(f.sc,myVars);
+        Scanner fScan = new Scanner(f.sc);
+        fScan.useDelimiter("\n");
+        Parser p = new Parser(new Scanner(f.sc),myVars);
         while (p.commands.hasNext()) p.parse(p.commands.nextLine());
     }
 
@@ -331,6 +331,7 @@ public class Parser {
             Double numB = nums.get(1);
             if (numB <= 0) throw new Error();
             while (modulus >= numB) {
+                // System.out.println(modulus);
                 modulus = modulus - numB;
             }
         }
@@ -512,13 +513,15 @@ public class Parser {
         return true;
     }
     public void ifMethod(String rest) {
+        // System.out.println("If Started :)");
         ArrayList<String> ifs = new ArrayList<String>();
         String curr = "";
         while (this.commands.hasNext()) {
+            // System.out.println("Looping");
             curr = this.commands.nextLine().trim();
-            System.out.println("Curr: " + curr);
+            // System.out.println("Curr: " + curr);
             if (curr.equals("done") || curr.equals("else") || curr.split(" ")[0].equals("elif")) {
-                System.out.println("I Broke");
+                // System.out.println("I Broke");
                 break;
             }
             ifs.add(curr);
