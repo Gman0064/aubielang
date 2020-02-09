@@ -1,0 +1,25 @@
+func fizzbuzz num a num b num top
+	def x num 1
+	print x
+	def c num mult a b
+	loop top
+	   def chka num mod x a
+	   def chkb num mod x b 
+	   def chkc num mod x c
+	   
+	   print sum chka chkb chkc
+
+		if equals chkc 0
+			print "FizzBuzz"
+		elif equals chka 0
+			print "Fizz"
+		elif equals chkb 0
+			print "Buzz"
+		else
+			print x
+		done
+		def x num sum x 1
+	next
+end
+
+fizzbuzz 3 5 100

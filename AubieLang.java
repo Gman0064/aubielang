@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AubieLang {
 	public static void main(String[] args) throws FileNotFoundException {
@@ -17,7 +18,7 @@ public class AubieLang {
 		try {
 			ArrayList<String> commands = new ArrayList<String>();
 			Scanner code = new Scanner(new File(fileName));
-			Parser parser = new Parser(code);
+			Parser parser = new Parser(code, new HashMap<String,Variable>());
 			parser.main();
 		} catch(FileNotFoundException e) {
 			System.out.println("   File \"" + fileName + "\" Not Found");
