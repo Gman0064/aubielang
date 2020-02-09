@@ -16,12 +16,13 @@ public class Parser {
     }
 
     public Object parse(String statementt) {
+        if (statementt == null) throw new Error("null");
         String statement = statementt.trim();
         String[] stateSplit = statement.split(" ");
         String command = stateSplit[0];
         String rest = "";
         
-        if (stateSplit.length == 1) {
+        if (stateSplit.length == 1 && !statementt.equals("")) {
             if ((command.charAt(0) == command.charAt(command.length() - 1)) && (command.charAt(0) == '"')) {
                 return command.substring(1,command.length()-1);
             }
@@ -33,49 +34,50 @@ public class Parser {
                 }
             }
             else {
-                return Double.parseDouble(command);
+                try {
+                    return Double.parseDouble(command);
+                } catch (Exception e) {}
             }
-        } else {
-            rest = statement.substring(command.length() + 1);
-            if (command.equals("print")) {
-                Object result = parse(rest);
-                System.out.println(result.toString());
-                return result;
-            } else if (command.equals("def")) {
-                if (def(rest)) {
-                   return "Defined";
-                }
-
-            } else if (command.equals("sum")) {
-                return sum(rest);
-
-            } else if (command.equals("sub")) {
-                return subtract(rest);
-
-            } else if (command.equals("mult")) {
-                return mult(rest);
-
-            } else if (command.equals("pow")) {
-                return power(rest);
-
-            } else if (command.equals("mod")) {
-                return mod(rest);
-
-            } else if (command.equals("log")) {
-                return log(rest);
-
-            } else if (command.equals("div")) {
-                return div(rest);
-
-            } else if (command.equals("fact")) {
-                return fact(rest);
-
-            } else if (command.startsWith("#")) {
-                return "Commented Line";
-
-            } else if (command.equals("")) {
-                return "";
+        }
+        rest = statement.substring(command.length()).trim();
+        if (command.equals("print")) {
+            Object result = parse(rest);
+            System.out.println(result.toString());
+            return result;
+        } else if (command.equals("def")) {
+            if (def(rest)) {
+               return "Defined";
             }
+
+        } else if (command.equals("sum")) {
+            return sum(rest);
+
+        } else if (command.equals("sub")) {
+            return subtract(rest);
+
+        } else if (command.equals("mult")) {
+            return mult(rest);
+
+        } else if (command.equals("pow")) {
+            return power(rest);
+
+        } else if (command.equals("mod")) {
+            return mod(rest);
+
+        } else if (command.equals("log")) {
+            return log(rest);
+
+        } else if (command.equals("div")) {
+            return div(rest);
+
+        } else if (command.equals("fact")) {
+            return fact(rest);
+
+        } else if (command.startsWith("#")) {
+            return "Commented Line";
+
+        } else if (command.equals("")) {
+            return "";
         }
         throw new Error("Hi");
     }
@@ -86,7 +88,6 @@ public class Parser {
     }
 
     public boolean def(String args) {
-        System.out.println(args);
         // name type value
         String[] arguments = args.split(" ");
         if (arguments.length < 3) throw new Error();
