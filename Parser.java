@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Parser {
-    public AubieError err = new AubieError();
     static int programCounter = 0;
     String[] arr1 = {"done","next","loop","def","func","sum","sub","mult","pow","fact","div","if","elif","else","end","equals","nequals","lequals","gequals","lthan","gthan","print","mod","log"};
     String[] arr2 = {"num","string"};
@@ -491,7 +490,7 @@ public class Parser {
         }
         else
         {
-            err.throwError(input, "syntax");
+            throw new Error();
         }
         String nextInput = commands.nextLine().trim();
         ArrayList<String> totalCommands = new ArrayList<String>();
