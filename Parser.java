@@ -17,26 +17,30 @@ public class Parser {
 
     public Object parse(String statementt) {
         if (statementt == null) throw new Error("null");
+
         String statement = statementt.trim();
         String[] stateSplit = statement.split(" ");
         String command = stateSplit[0];
         String rest = "";
         
-        if (stateSplit.length == 1 && !statementt.equals("")) {
-            if ((command.charAt(0) == command.charAt(command.length() - 1)) && (command.charAt(0) == '"')) {
-                return command.substring(1,command.length()-1);
+        if (statement.contains("\"")) {
+            if (statement.charAt(0) == '"' && statement.charAt(0) == statement.charAt(statement.length()-1)) {
+                String result = statement.substring(1,statement.length()-1);
+                return result;
             }
-            else if (isDefined(command)) {
+        } else if (stateSplit.length == 1 && !statement.equals("")) {
+            if (isDefined(command)) {
                 if (vars.get(command).type.equals("num")) {
                     return parse(vars.get(command).value);
                 } else {
                     return vars.get(command).value;
                 }
-            }
-            else {
+            } else {
                 try {
                     return Double.parseDouble(command);
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    throw new Error("Illegal parsing");
+                }
             }
         }
         rest = statement.substring(command.length()).trim();
@@ -77,7 +81,7 @@ public class Parser {
             return "Commented Line";
 
         } else if (command.equals("")) {
-            return "";
+            return "Empty Line";
         }
         throw new Error("Hi");
     }
