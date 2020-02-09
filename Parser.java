@@ -11,11 +11,12 @@ public class Parser {
 
     public void main() {
         while (commands.hasNext()) {
-            parse(commands.nextLine().trim());
+            parse(commands.nextLine());
         }
     }
 
-    public Object parse(String statement) {
+    public Object parse(String statementt) {
+        String statement = statementt.trim();
         String[] stateSplit = statement.split(" ");
         String command = stateSplit[0];
         String rest = "";
