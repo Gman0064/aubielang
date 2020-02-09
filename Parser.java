@@ -22,7 +22,7 @@ public class Parser {
             if (def(statement.substring(command.length() + 1))) {
                 return "Defined";
             } else {
-                return "Fuck";
+                return "Incorrect statement";
             }
         } else if (command.equals("sum")) {
             return sum(statement.substring(command.length() + 1));
@@ -40,6 +40,10 @@ public class Parser {
             return div(statement.substring(command.length() + 1));
         } else if (command.equals("fact")) {
             return fact(statement.substring(command.length() + 1));
+        } else if (command.startsWith("#")) {
+            return "Commented Line";
+        } else if (command.equals("")) {
+            return "";
         }
 
         throw new Error();
