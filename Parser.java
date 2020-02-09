@@ -23,7 +23,7 @@ public class Parser {
         String command = stateSplit[0];
         String rest = "";
         if (statement.length() >= command.length() + 1) {
-            rest = statement.substring(command.length() + 1)
+            rest = statement.substring(command.length() + 1);
         } else {
             throw new Error();
         }
