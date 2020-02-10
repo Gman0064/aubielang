@@ -1,7 +1,7 @@
 ## The AUBIElang Programming Language
 
 ## Standard Functions:
-print a (Print to console)
+print a (Print to console)  
 sum a b c... (Addition)  
 sub a b c... (Subtraction)  
 div a b c... (Division)  
