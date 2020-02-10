@@ -1,14 +1,14 @@
 func helloworld
-print "Hello World!"
+  print "Hello World!"
 end
 
 func iseven num a
-def chk num mod a 2
-if equals chk 0
-print "yes"
-else
-print "no"
-done
+  def chk num mod a 2
+  if equals chk 0
+    print "yes"
+  else
+    print "no"
+  done
 end
 
 helloworld
