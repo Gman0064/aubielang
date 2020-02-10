@@ -1,6 +1,7 @@
 ## The AUBIElang Programming Language
 
-## Math:
+## Standard Functions:
+print a (Print to console)
 sum a b c... (Addition)  
 sub a b c... (Subtraction)  
 div a b c... (Division)  
@@ -10,10 +11,7 @@ pow a b (Exponents)
 mod a b (Modulus)  
 fact a (Factorials)  
 
-## Standard Functions:
-print a (Print to console)  
-
-## Keywords:
+## Keywords and Comparators:
 def a (type num:string) (value)  
   
 if (comparison)  
@@ -27,10 +25,10 @@ loop a
 ...  
 next  
 
-function a (parameter type, name)  
+func (name) (parameter type, name)  
 ...  
 end  
-  
+
 equals (equal to)  
 nequals (not equal to)  
 gequals (greater than or equal to)  
