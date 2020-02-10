@@ -1,4 +1,13 @@
 ## The AUBIElang Programming Language
+The AUBIElang Programming Language is a strongly typed, intepreted programming language that runs through the JVM via a Java interpreter. It is designed to be a verbose language based around built-in keywords, while also ignoring whitespace as a formatting/parsing technique. Scripts written in this language are saved with the ***.aub extension.***
+
+The language and interpreter were written as an entry to the 2020 AUHackathon in Auburn, AL, with development lasting over February 8th-9th. It has support for 8 built-in math functions, console output, if-statement branching, for loops, user-defined variables, and user-defined functions. AUBIElang supports only 2 types: num (a double), and string.
+
+#### Authors
+Josh Coward  
+Garrett Dickinson 
+Saksham Geole  
+Matt Wurstner  
 
 ## Standard Functions:
 print a (Print to console)  
