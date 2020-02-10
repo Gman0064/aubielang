@@ -5,7 +5,7 @@ The language and interpreter were written as an entry to the 2020 AUHackathon in
 
 #### Authors:
 Josh Coward  
-Garrett Dickinson 
+Garrett Dickinson  
 Saksham Geole  
 Matt Wurstner  
 
