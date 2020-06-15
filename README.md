@@ -6,7 +6,7 @@ The language and interpreter were written as an entry to the 2020 AUHackathon in
 ### Authors:  
 Josh Coward  
 Garrett Dickinson  
-Saksham Geole  
+Saksham Goel
 Matt Wurstner  
 
 ## How to Use:
