@@ -6,12 +6,12 @@ The language and interpreter were written as an entry to the 2020 AUHackathon in
 ### Authors:  
 Josh Coward  
 Garrett Dickinson  
-Saksham Goel
+Saksham Goel  
 Matt Wurstner  
 
 ## How to Use:
 1. Clone/download the repository with everything in it to your machine
-2. Use javac to compile AubieLang.java, which should, in turn, compile all of the other necessary classes. (compiling to a jar file should work too, but hasn't been tested)
+2. Use `javac` to compile AubieLang.java, which should in turn compile all of the other necessary classes. (compiling to a jar file should work too, but hasn't been tested)
 3. Run the compiled AubieLang file with the name of a ".aub" script in the same directory, and it will interpret the script.
 
 `$ git clone https://github.com/Gman0064/aubielang.git`  
